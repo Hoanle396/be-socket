@@ -45,6 +45,7 @@
     "class-validator": "^0.13.2",
     "cookie": "^0.5.0",
     "crypto": "^1.0.1",
+    "dayjs": "^1.11.8",
     "fs": "^0.0.1-security",
     "googleapis": "^105.0.0",
     "hardhat": "^2.10.1",

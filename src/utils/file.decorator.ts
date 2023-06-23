@@ -5,6 +5,6 @@ import { image } from './upload.util';
 export function ApiFileImages(name: string) {
   return applyDecorators(
     UseInterceptors(FileInterceptor(name, { storage: image })),
-    ApiConsumes('multipart/form-data'),
+    ApiConsumes('multipart/form-data')
   );
 }
