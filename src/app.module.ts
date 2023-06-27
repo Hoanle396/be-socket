@@ -29,6 +29,7 @@ import { UsersModule } from './users/users.module';
       entities: [Users],
       synchronize: true,
       autoLoadEntities: true,
+      logging: true,
     }),
     RedisModule.forRoot({
       readyLog: true,

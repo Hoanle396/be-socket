@@ -12,7 +12,7 @@ const client = new OAuth2(process.env.GOOGLE_ID);
 export class AuthService {
   constructor(
     private usersService: UsersService,
-    private jwtService: JwtService,
+    private jwtService: JwtService
   ) {}
   async validateUser(email: string, pass: string): Promise<any> {
     const user = await this.usersService.findOne(email);
@@ -53,14 +53,14 @@ export class AuthService {
     }
   }
 
-  async logingoogle(logingoogle: GoogleUserDto) {
-    const user = await this.usersService.findOne(logingoogle.email);
+  async loginGoogle(google: GoogleUserDto) {
+    const user = await this.usersService.findOne(google.email);
     if (user) {
       return this.login(user);
     } else {
       try {
         const res = await client.verifyIdToken({
-          idToken: logingoogle.idToken,
+          idToken: google.idToken,
         });
         const newUser = new Users();
         newUser.fullname =

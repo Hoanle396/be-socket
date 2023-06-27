@@ -25,7 +25,7 @@ import { LoginDto } from './dto/login.dto';
 export class AuthController {
   constructor(
     private readonly authService: AuthService,
-    private readonly usersService: UsersService,
+    private readonly usersService: UsersService
   ) {}
   @UseGuards(LocalAuthGuard)
   @Post('/login')
@@ -74,7 +74,7 @@ export class AuthController {
   @Post('/login/google')
   async postLogin(@Body() createUserDto: GoogleUserDto, @Res() res: Response) {
     try {
-      const data = await this.authService.logingoogle(createUserDto);
+      const data = await this.authService.loginGoogle(createUserDto);
 
       if (data) {
         return res
