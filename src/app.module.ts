@@ -12,6 +12,8 @@ import { ChatModule } from './chat/chat.module';
 
 import { Users } from './entities/user.entity';
 import { UsersModule } from './users/users.module';
+import { UrlModule } from './url/url.module';
+import { URL } from './entities/url.entity';
 
 @Module({
   imports: [
@@ -26,26 +28,27 @@ import { UsersModule } from './users/users.module';
       username: process.env.DATABASE_USER || 'postgre',
       password: process.env.DATABASE_PASSWORD || 'postgre',
       database: process.env.DATABASE_DBNAME || 'game-be',
-      entities: [Users],
+      entities: [Users, URL],
       synchronize: true,
       autoLoadEntities: true,
       logging: true,
     }),
-    RedisModule.forRoot({
-      readyLog: true,
-      config: {
-        host: process.env.REDIS_HOST || '127.0.0.1',
-        port: Number(process.env.REDIS_PORT) || 6379,
-        // username: process.env.REDIS_USER || 'default',
-        // password: process.env.REDIS_PASSWORD || 'redis',
-      },
-    }),
+    // RedisModule.forRoot({
+    //   readyLog: true,
+    //   config: {
+    //     host: process.env.REDIS_HOST || '127.0.0.1',
+    //     port: Number(process.env.REDIS_PORT) || 6379,
+    //     // username: process.env.REDIS_USER || 'default',
+    //     // password: process.env.REDIS_PASSWORD || 'redis',
+    //   },
+    // }),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', '/public'),
     }),
     AuthModule,
     UsersModule,
     ChatModule,
+    UrlModule,
   ],
 })
 export class AppModule {}
